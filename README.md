@@ -25,12 +25,94 @@
 
 ### 1. 拉取项目源码
 
-**方式一：Git 拉取（推荐）**
+#### 方式一：Git 拉取（推荐）**
+
 ```bash
 git clone https://github.com/91276/cf-flux-schnell.git
+```
 
-**方式 2：直接下载压缩包
+#### 方式二：直接下载压缩包
+
 打开 GitHub 仓库页面（https://github.com/91276/cf-flux-schnell），点击右上角「Code」→「Download ZIP」；
 解压下载的压缩包到本地任意文件夹。
 
+### 2. 进入项目目录
 
+终端执行命令，进入解压 / 拉取后的项目文件夹：
+
+```bash
+cd cf-flux-schnell  # 文件夹名称与仓库名一致
+```
+
+### 3. 安装依赖（恢复 node_modules）
+
+项目依赖已记录在 package.json 和 pnpm-lock.yaml 中，终端执行：
+
+```bash
+# 若未安装 pnpm，先执行 npm install -g pnpm 安装
+pnpm install
+```
+
+执行完成后，会自动生成 node_modules 文件夹，项目依赖恢复完成。
+
+
+### 4. 本地测试（可选，提前排错）
+
+启动本地开发服务器，测试模型调用逻辑：
+
+```bash
+npx wrangler dev
+```
+
+启动成功后，终端会输出本地测试 URL（如 http://localhost:8787），可通过Postman 发送 POST 请求测试：
+ 
+```json
+{
+  "prompt": "cyberpunk cat, neon lights",
+  "steps": 4
+}
+```
+
+### 5. 修改代码（如需）
+
+根据需求修改 src/index.ts（如调整模型参数、响应格式等），修改后重复步骤 4 验证效果。
+
+### 6. 重新部署到 Cloudflare
+
+本地测试无问题后，更新线上服务：
+
+```bash
+npx wrangler deploy
+```
+
+部署成功后，终端会输出线上服务 URL（如 https://cf-flux-schnell-xxx.workers.dev），可直接用于调用。
+
+
+## 线上服务调用说明
+请求方式：POST
+
+请求 URL：部署后的 Cloudflare Worker 地址
+
+请求体（JSON 格式）
+
+```json
+{
+  "prompt": "你的文生图提示词（必填）",
+  "steps": 4  // 可选，扩散步数（1-8，默认 4）
+}
+```
+
+返回结果：JSON 格式，包含 imageBase64 字段（Base64 编码的图片数据）
+
+
+## 注意事项
+无需上传 node_modules、.wrangler 等文件夹，pnpm install 可一键恢复；
+
+若需修改线上服务，必须先修改本地代码，再执行 npx wrangler deploy 重新部署；
+
+查看线上服务日志 / 状态：登录 Cloudflare 控制台 →「Compute」→「Workers & Pages」→ 对应项目；
+
+## 仓库地址
+
+https://github.com/91276/cf-flux-schnell
+（方便后续访问）。
