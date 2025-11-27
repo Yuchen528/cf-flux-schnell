@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cf-flux-schnell",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-11-25", // 用当前日期，和系统一致
+  "ai": {
+    "binding": "AI" // 固定变量名，后续代码会通过env.AI调用模型
+  }
+}
