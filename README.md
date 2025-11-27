@@ -1,5 +1,5 @@
-cf-flux-schnell - Cloudflare Worker 调用 FLUX.1-schnell 模型
-项目简介
+# cf-flux-schnell - Cloudflare Worker 调用 FLUX.1-schnell 模型
+1.项目简介
 本项目是基于 Cloudflare Workers 开发的 FLUX.1-schnell 文生图服务，核心功能是接收 prompt 等参数，调用 Cloudflare AI 模型生成图片，返回 Base64 格式结果（独立部署，不影响其他服务）。
 已上传文件 / 文件夹说明
 文件 / 文件夹	作用说明
