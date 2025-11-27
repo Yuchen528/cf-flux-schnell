@@ -112,7 +112,4 @@ npx wrangler deploy
 
 查看线上服务日志 / 状态：登录 Cloudflare 控制台 →「Compute」→「Workers & Pages」→ 对应项目；
 
-## 仓库地址
 
-https://github.com/91276/cf-flux-schnell
-（方便后续访问）。
