@@ -29,7 +29,7 @@ git clone https://github.com/91276/cf-flux-schnell.git
 
 #### 方式二：直接下载压缩包
 
-打开 GitHub 仓库页面（https://github.com/91276/cf-flux-schnell）
+打开 GitHub 仓库页面（https://github.com/91276/cf-flux-schnell ）
 点击右上角「Code」→「Download ZIP」；
 解压下载的压缩包到本地任意文件夹。
 
@@ -61,7 +61,7 @@ pnpm install
 npx wrangler dev
 ```
 
-启动成功后，终端会输出本地测试 URL（如 http://localhost:8787）
+启动成功后，终端会输出本地测试 URL（如 http://localhost:8787 ）
 可通过Postman 发送 POST 请求测试：
  
 ```json
@@ -83,7 +83,7 @@ npx wrangler dev
 npx wrangler deploy
 ```
 
-部署成功后，终端会输出线上服务 URL（如 https://cf-flux-schnell-xxx.workers.dev），可直接用于调用。
+部署成功后，终端会输出线上服务 URL（如 https://cf-flux-schnell-xxx.workers.dev ），可直接用于调用。
 
 
 ## 线上服务调用说明
